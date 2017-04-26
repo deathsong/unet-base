@@ -21,17 +21,22 @@ public class Player : NetworkBehaviour {
 
 		if (isLocalPlayer) {
 			pseudo = GameManager.Instance.Pseudo;
-
 			Console.Instance.AddMessage ((name + " Player Start : "+pseudo).FromStyle(style));
 			CmdRename (pseudo);
 		}
 	}
 	public override void OnStartClient ()
 	{
-		if (isLocalPlayer)
+		if (isLocalPlayer) {
 			pseudo = GameManager.Instance.Pseudo;
-		Console.Instance.AddMessage ((name + " Player OnStartClient : "+pseudo).FromStyle(style));
-		//CmdRename (pseudo);
+			Console.Instance.AddMessage ((name + " Player OnStartClient : " + pseudo).FromStyle (style));
+			CmdRename (pseudo);
+		}
+	}
+
+	void update()
+	{
+		namePlate.text = pseudo;	
 	}
 
 	[Command]
@@ -44,7 +49,7 @@ public class Player : NetworkBehaviour {
 	// Update is called once per frame
 	void RenameHook(string sname)
 	{
-		pseudo = sname;
+		//pseudo = sname;
 		Console.Instance.AddMessage ((name + " Player hookrename : "+sname).FromStyle(style));
 		//if (!isLocalPlayer) {
 			transform.name = sname;
