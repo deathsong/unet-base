@@ -1,0 +1,11 @@
+diff a/Assets/Health.cs b/Assets/Health.cs	(rejected hunks)
+@@ -23,9 +23,6 @@
+ 	}
+ 
+ 	// Update is called once per frame
+-	void Update () {
+-		
+-	}
+ 
+ 	void ChangeHealth(int _value)
+ 	{

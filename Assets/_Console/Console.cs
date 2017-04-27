@@ -52,7 +52,6 @@ public class Console : MonoBehaviour {
 		Text text = go.GetComponent<Text> ();
 		text.text = _text;
 		messages.Add (go);
-		if (messages.Count > 20) {
 			Destroy (messages[0]);
 			messages.RemoveAt (0);
 		}

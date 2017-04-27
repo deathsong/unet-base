@@ -8,7 +8,7 @@ public class Player : NetworkBehaviour {
 
 	// Use this for initialization
 	[SyncVar(hook="RenameHook")]
-	public string pseudo = "";
+	public string pseudo;
 
 	[SerializeField]
 	Text namePlate;
@@ -21,17 +21,27 @@ public class Player : NetworkBehaviour {
 
 		if (isLocalPlayer) {
 			pseudo = GameManager.Instance.Pseudo;
-
 			Console.Instance.AddMessage ((name + " Player Start : "+pseudo).FromStyle(style));
+			transform.name = pseudo;
+			namePlate.text = pseudo;
 			CmdRename (pseudo);
 		}
 	}
 	public override void OnStartClient ()
 	{
-		if (isLocalPlayer)
+		if (isLocalPlayer) {
 			pseudo = GameManager.Instance.Pseudo;
-		Console.Instance.AddMessage ((name + " Player OnStartClient : "+pseudo).FromStyle(style));
-		//CmdRename (pseudo);
+			Console.Instance.AddMessage ((name + " Player OnStartClient : " + pseudo).FromStyle (style));
+			CmdRename (pseudo);
+
+		}
+		transform.name = pseudo;
+		namePlate.text = pseudo;
+	}
+
+	void update()
+	{
+		namePlate.text = pseudo;	
 	}
 
 	[Command]
