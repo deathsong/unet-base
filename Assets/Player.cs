@@ -8,7 +8,7 @@ public class Player : NetworkBehaviour {
 
 	// Use this for initialization
 	[SyncVar(hook="RenameHook")]
-	public string pseudo = "";
+	public string pseudo;
 
 	[SerializeField]
 	Text namePlate;
@@ -22,6 +22,8 @@ public class Player : NetworkBehaviour {
 		if (isLocalPlayer) {
 			pseudo = GameManager.Instance.Pseudo;
 			Console.Instance.AddMessage ((name + " Player Start : "+pseudo).FromStyle(style));
+			transform.name = pseudo;
+			namePlate.text = pseudo;
 			CmdRename (pseudo);
 		}
 	}
@@ -31,7 +33,10 @@ public class Player : NetworkBehaviour {
 			pseudo = GameManager.Instance.Pseudo;
 			Console.Instance.AddMessage ((name + " Player OnStartClient : " + pseudo).FromStyle (style));
 			CmdRename (pseudo);
+
 		}
+		transform.name = pseudo;
+		namePlate.text = pseudo;
 	}
 
 	void update()
@@ -49,7 +54,7 @@ public class Player : NetworkBehaviour {
 	// Update is called once per frame
 	void RenameHook(string sname)
 	{
-		//pseudo = sname;
+		pseudo = sname;
 		Console.Instance.AddMessage ((name + " Player hookrename : "+sname).FromStyle(style));
 		//if (!isLocalPlayer) {
 			transform.name = sname;
