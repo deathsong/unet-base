@@ -149,7 +149,7 @@ public class Motor : NetworkBehaviour {
 	public void RpcExplosion(float force,Vector3 position,float radius)
 	{
 		if (isLocalPlayer)
-			rb.AddExplosionForce (force, position, radius,1,ForceMode.Impulse);
+			rb.AddExplosionForce (force, position, radius,3,ForceMode.Impulse);
 	}
 
 	void AppliqueMouvement()

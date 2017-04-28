@@ -27,11 +27,24 @@ public class Health : NetworkBehaviour {
 		
 	}
 
+	public void GetDamage(int damage)
+	{
+		health -= damage;
+		health = Mathf.Clamp (health, 0, 100);
+	}
+
+	[Command]
+	void CmdGetDamage(int damage)
+	{
+		health -= damage;
+		health = Mathf.Clamp (health, 0, 100);
+	}
+
 	void ChangeHealth(int _value)
 	{
 		health = _value;
 		Console.Instance.AddMessage (name + " Hook change health");
 		health = _value;
-		healthBar.fillAmount = (int)(100f / health);
+		healthBar.fillAmount = (float)health/100f;
 	}
 }
