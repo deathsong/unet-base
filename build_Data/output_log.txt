@@ -1,0 +1,54 @@
+Initialize engine version: 5.4.2f1 (94e3a60ee258)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 1060 3GB (ID=0x1c02)
+    Vendor:   NVIDIA
+    VRAM:     3035 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\unet-base\build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\unet-base\build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\unet-base\build_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\unet-base\build_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\unet-base\build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\unet-base\build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\unet-base\build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\unet-base\build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: E:\unet-base\build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading E:\unet-base\build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.073 seconds
+Platform assembly: E:\unet-base\build_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\unet-base\build_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.941101 ms
+click
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+ok
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+OK
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:50327}
+Server client disconnect error:1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+OnDisconnectError error:6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+stop
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 11ce0 -> priority: 1 
+  Thread -> id: 10d80 -> priority: 1 
