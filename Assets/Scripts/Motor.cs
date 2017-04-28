@@ -134,18 +134,22 @@ public class Motor : NetworkBehaviour {
 		rb.AddForce (dir * 10f, ForceMode.Impulse);
 	}
 
+	[Server]
 	public void AppliqueExplosion(float force,Vector3 position,float radius)
 	{
-		if (isLocalPlayer) {
+		RpcExplosion (force, position, radius);
+		/*if (isLocalPlayer) {
 			Console.Instance.AddMessage ("explosion force");
 			//rb.AddExplosionForce (force, position, radius,1,ForceMode.Impulse);
-			RpcExplosion (force, position, radius);
-		}
+			//RpcExplosion (force, position, radius);
+		}*/
 	}
 		
+	[ClientRpc]
 	public void RpcExplosion(float force,Vector3 position,float radius)
 	{
-		rb.AddExplosionForce (force, position, radius,1,ForceMode.Impulse);
+		if (isLocalPlayer)
+			rb.AddExplosionForce (force, position, radius,1,ForceMode.Impulse);
 	}
 
 	void AppliqueMouvement()
