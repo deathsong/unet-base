@@ -1,6 +1,6 @@
-/Library
-/Temp
-/build_Data
+Library/**/*
+Temp/**/*
+build_Data/**/*
 
 # Unity3D generated meta files
 *.pidb.meta

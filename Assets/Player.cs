@@ -27,6 +27,7 @@ public class Player : NetworkBehaviour {
 			CmdRename (pseudo);
 		}
 	}
+
 	public override void OnStartClient ()
 	{
 		if (isLocalPlayer) {

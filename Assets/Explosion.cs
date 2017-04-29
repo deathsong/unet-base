@@ -47,13 +47,14 @@ public class Explosion : NetworkBehaviour {
 						RaycastHit hit;
 				Vector3 direction = (item.transform.position - myTransform.position);
 				direction.Normalize ();
+						Vector3 start = myTransform.position - direction;
 						//Debug.DrawRay (item.transform.position, direction * 10, Color.red, 20f);
-						if ((Physics.Raycast (myTransform.position, direction, out hit, 5f, layerMask))) 
+						if ((Physics.Raycast (start, direction, out hit, 5f, layerMask))) 
 						{
 							Console.Instance.AddMessage (hit.transform.name + " explosé");
 					Console.Instance.AddMessage ("pourcent degat " + (100-(hit.distance/5f*100)).ToString());
 							Motor m = hit.transform.GetComponent<Motor> ();
-							m.AppliqueExplosion (5f, myTransform.position-direction , 5f);
+					m.AppliqueExplosion (5f, start , 5f);
 							//Debug.DrawRay (myTransform.position, Vector3.up*5, Color.red, 5f);
 							Health h = item.GetComponent<Health> ();
 					int damage = (int)(25f*(1f - (hit.distance / 5f)));

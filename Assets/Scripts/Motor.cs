@@ -31,8 +31,7 @@ public class Motor : NetworkBehaviour {
 	Transform cameraHolder;
 	Rigidbody rb;
 
-	[SerializeField]
-	bool spawnmode = false;
+
 
 	public Transform CameraHolder 
 	{
@@ -43,6 +42,9 @@ public class Motor : NetworkBehaviour {
 
 	Collider collider;
 
+	[SerializeField]
+	bool spawnmode = true;
+
 	public bool SpawnMode
 	{
 		get { return spawnmode; }
@@ -51,7 +53,7 @@ public class Motor : NetworkBehaviour {
 			if (value) 
 			{
 				this.gameObject.SetLayer (10);
-				spawnModeTimer = 1f;
+				spawnModeTimer = 3f;
 			} else 
 			{
 				this.gameObject.SetLayer (9);
@@ -59,10 +61,13 @@ public class Motor : NetworkBehaviour {
 		}
 	}
 
-	public float spawnModeTimer = 1f;
+	public float spawnModeTimer = 3f;
+
+	//Player player;
 
 	void Awake()
 	{
+		//player = GetComponent<Player> ();
 		rb = GetComponent<Rigidbody> ();
 		collider = GetComponent<Collider> ();
 	}
@@ -81,6 +86,19 @@ public class Motor : NetworkBehaviour {
 		//}
 		Spawn(PlayerTeam.Instance.team);
 
+	}
+
+	public void Die()
+	{
+		rb.constraints = RigidbodyConstraints.None;
+	}
+
+	public void Rez()
+	{
+		rb.constraints = RigidbodyConstraints.FreezeRotation;
+		rb.rotation = Quaternion.identity;
+		if (isLocalPlayer)
+			Spawn (PlayerTeam.Instance.team);
 	}
 
 	public override void OnStartLocalPlayer ()
@@ -115,6 +133,8 @@ public class Motor : NetworkBehaviour {
 
 	public void Move (Vector3 direction)
 	{
+		if (spawnmode)
+			return;
 		_velocity = direction;
 	}
 
@@ -125,7 +145,8 @@ public class Motor : NetworkBehaviour {
 
 	void FixedUpdate()
 	{
-		AppliqueMouvement ();
+		if (!spawnmode)
+			AppliqueMouvement ();
 		AppliqueRotation ();
 	}
 
@@ -137,6 +158,8 @@ public class Motor : NetworkBehaviour {
 	[Server]
 	public void AppliqueExplosion(float force,Vector3 position,float radius)
 	{
+		if (spawnmode)
+			return;
 		RpcExplosion (force, position, radius);
 		/*if (isLocalPlayer) {
 			Console.Instance.AddMessage ("explosion force");

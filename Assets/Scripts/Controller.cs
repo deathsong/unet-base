@@ -16,11 +16,12 @@ public class Controller : NetworkBehaviour {
 
 	Motor motor;
 	Transform myTransform;
-
+	Health health;
 	PlayerTeam team;
 
 	void Awake()
 	{
+		health = GetComponent<Health> ();
 		team = GetComponent<PlayerTeam> ();
 		motor = GetComponent<Motor> ();
 		myTransform = GetComponent<Transform> ();
@@ -33,6 +34,9 @@ public class Controller : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// calcul mouvement
+		if (health.dead)
+			return;
+		
 		if (Input.GetKeyDown (KeyCode.Alpha2)) {
 			Vector3 position  = motor.CameraHolder.position;
 			Vector3 direction = motor.CameraHolder.forward;
